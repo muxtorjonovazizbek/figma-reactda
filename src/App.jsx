@@ -110,6 +110,12 @@ export default class RandomNamePicker extends Component {
     this.setState({ newName: event.target.value });
   };
 
+  handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      this.addName()
+    }
+  }
+
   addName = () => {
     const { names, newName } = this.state;
     if (newName) {
@@ -138,6 +144,7 @@ export default class RandomNamePicker extends Component {
               type="text"
               value={newName}
               onChange={this.handleInputChange}
+              onKeyPress={this.handleKeyPress}
               placeholder="Enter a name"
               className="form-control mb-2"
             />
